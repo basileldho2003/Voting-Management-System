@@ -1,0 +1,12 @@
+.align-center{
+    text-align: center;
+}
+
+a{
+    color: rgb(252, 197, 0);
+}
+
+a:hover{
+    color: darkolivegreen;
+    background-color: rgb(195, 210, 30);
+}

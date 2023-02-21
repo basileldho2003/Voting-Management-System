@@ -1,0 +1,34 @@
+h1,
+h3 {
+    text-align: center;
+}
+
+
+.marquee {
+    width: 100%;
+    background: rgb(255, 217, 255);
+    white-space: nowrap;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+    text-align: end;
+}
+
+.marquee div {
+    font-size: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+    padding-left: 100%;
+    text-align: end;
+    display: inline-block;
+    animation: animate 10s linear infinite;
+}
+
+@keyframes animate {
+    100% {
+        transform: translate(-100%, 0);
+    }
+}
+
+.marquee:hover div {
+    animation-play-state: paused;
+}

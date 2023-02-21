@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+        crossorigin="anonymous"></script>
+    <title>Update candidate id {{cid}} - VMS PORTAL FOR e_Voter</title>
+</head>
+
+<body class="p-3 m-0 border-0 bd-example">
+    <form method="post" action="/edit_candidate/update" class="row g-3" onsubmit="if(!confirm('Are you sure you want to update candidate {{cid}}?')){return false;} ">
+        <div class="col-md-4" hidden>
+            <div class="input-group mb-3" hidden>
+                <span class="input-group-text" id="inputGroup-sizing-default"
+                    style="background-color:rgb(255, 133, 96)" hidden>Candidate ID</span>
+                <input type="text" class="form-control" aria-describedby="inputGroup-sizing-default" spellcheck="false"
+                    name="cid" id="cid" maxlength="30" value="{{cid}}" hidden>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="inputGroup-sizing-default"
+                    style="background-color:rgb(255, 133, 96)">Candidate Name</span>
+                <input type="text" class="form-control" aria-describedby="inputGroup-sizing-default" spellcheck="false"
+                    name="cname" id="cname" maxlength="30" value="{{cname}}">
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="inputGroup-sizing-default"
+                    style="background-color:rgb(255, 133, 96)">Current Political Party</span>
+                <input type="text" class="form-control" aria-describedby="inputGroup-sizing-default" spellcheck="false"
+                   name="cparty" id="cparty" maxlength="30" value="{{party}}" readonly>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="inputGroup-sizing-default"
+                    style="background-color:rgb(255, 133, 96)">Current Symbol</span>
+                <input type="text" class="form-control" aria-describedby="inputGroup-sizing-default" spellcheck="false"
+                   name="clogo" id="clogo" value="{{logo}}" readonly>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="inputGroup-sizing-default"
+                    style="background-color:rgb(255, 133, 96)">New Political Party</span>
+                <select class="form-select" aria-label="Political Party" aria-describedby="inputGroup-sizing-default"
+                   name="nparty" id="nparty" onchange="Symbol()">
+                    <option value="" selected>--------------Select Party--------------</option>
+                    <option value="BJP">Bharatiya Janata Party</option>
+                    <option value="CONG">Congress</option>
+                    <option value="AAP">Aam Aadmi Party</option>
+                    <option value="CPI(M)">Communist Party of India (Marxist)</option>
+                    <option value="IND">Independent</option>
+                    <option value="NOTA">NOTA</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="inputGroup-sizing-default"
+                    style="background-color:rgb(255, 133, 96)">New Symbol</span>
+                <input type="text" class="form-control" aria-describedby="inputGroup-sizing-default" spellcheck="false"
+                   name="nlogo" id="nlogo" readonly>
+            </div>
+        </div>
+        <div class="mb-3" style="text-align: center;">
+            <input type="submit" class="btn btn-primary" value="Submit">
+            <input type="reset" class="btn btn-danger" value="Clear">
+        </div>
+    </form>
+    <script>
+        var cname = document.getElementById("cname")
+            cname.onkeyup = function () {
+                var PATTERN = /^[a-zA-Z ]+$/;
+                if (!cname.value.match(PATTERN)) {
+                    cname.value = cname.value.replace(cname.value.slice(-1), "");
+                }
+            }
+        function Symbol() {
+            var party = document.getElementById("nparty").value;
+            switch (party) {
+                case "BJP":
+                    document.getElementById("nlogo").value = "Lotus";
+                    break;
+                case "CONG":
+                    document.getElementById("nlogo").value = "Hand";
+                    break;
+                case "AAP":
+                    document.getElementById("nlogo").value = "Broom";
+                    break;
+                case "CPI(M)":
+                    document.getElementById("nlogo").value = "Plough";
+                    break;
+                case "IND":
+                    document.getElementById("nlogo").value = "Laptop";
+                    break;
+                case "NOTA":
+                    document.getElementById("nlogo").value = "No logo";
+                    break
+                default:
+                    document.getElementById("nlogo").value = "";
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,36 @@
+#logout{
+    margin-left: 1300px;
+}
+
+#pnav{
+    background-color: rgb(153, 53, 178);
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+#myTab{
+    margin-left: 0.5px;
+    margin-top: 0.5px;
+    background-color: blanchedalmond;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid rgb(0, 0, 0);
+    background-color: rgb(0, 255, 255);
+}
+
+table td {
+    padding: 8px;
+    border: 1px solid rgb(0, 0, 0);
+}
+
+table th {
+    padding: 8px;
+    border: 1px solid rgb(0, 0, 0);
+}

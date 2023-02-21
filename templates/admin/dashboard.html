@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Vary" content="*">
+    <title>Dashboard - VMS PORTAL FOR e_Voter</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/admin/dashboard.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+        crossorigin="anonymous"></script>
+    <script src="{{ url_for('static',filename='js/admin/dashboard.js') }}"></script>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <script>
+        var messages = "{{ messages | safe }}";
+        alert(messages.replace(/^\[(.+)\]$/, '$1').replace(/'/g, ''));
+    </script>
+    {% endif %}
+    {% endwith %}
+    <style>
+        #delete {
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+    </style>
+</head>
+
+<body style="background-color: rgb(241, 198, 255);">
+    <nav class="navbar" id="pnav">
+        <form method="get" action="/logout" class="container-fluid justify-content-start">
+            <button type="submit" class="btn btn-danger" id="logout">🔐 Logout</button>
+            <div class="container">
+                <span class="navbar-text">
+                    <h1>VMS DASHBOARD FOR e_Voter</h1>
+                </span>
+            </div>
+        </form>
+    </nav>
+
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="voter-tab" data-bs-toggle="tab" data-bs-target="#voter-tab-pane"
+                type="button" role="tab" aria-controls="voter-tab-pane" aria-selected="true">Voter</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="candidate-tab" data-bs-toggle="tab" data-bs-target="#candidate-tab-pane"
+                type="button" role="tab" aria-controls="candidate-tab-pane" aria-selected="false">Candidate</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="result-tab" data-bs-toggle="tab" data-bs-target="#result-tab-pane"
+                type="button" role="tab" aria-controls="result-tab-pane" aria-selected="false">Result</button>
+        </li>
+    </ul>
+
+    <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="voter-tab-pane" role="tabpanel" aria-labelledby="voter-tab"
+            tabindex="0">
+            <nav class="navbar navbar-expand-lg" style="background-color: #ffb977;"">
+                            <div class=" container-fluid">
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <div class="d-flex" style="margin-left: 1200px;">
+                        <input class="form-control me-2" type="search" id="searchbx" placeholder="🔍 Search"
+                            aria-label="Search" onkeyup="search()">
+                    </div>
+                </div>
+        </div>
+        </nav>
+        <table id="voter" rules="all">
+            <tr>
+                <th>AADHAR ID</th>
+                <th>VOTER NAME</th>
+                <th>DATE OF BIRTH</th>
+                <th>AGE</th>
+                <th>GENDER</th>
+                <th>EDUCATION</th>
+                <th>CANDIDATE ID</th>
+            </tr>
+            {% for vrec in voter %}
+            <tr>
+                {% for vres in vrec %}
+                <td>
+                    {{vres}}
+                </td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    <div class="tab-pane fade" id="candidate-tab-pane" role="tabpanel" aria-labelledby="candidate-tab" tabindex="0">
+        <nav class="navbar navbar-expand-lg" style="background-color: #faffb1;"">
+                <div class=" container-fluid">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent2">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/new_candidate" target="_blank">➕ Add</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/edit_candidate" target="_blank">✂️ Edit</a>
+                    </li>
+                    <li class="nav-item">
+                        <a type="button" class="nav-link" id="delete" value="delete" onclick="hide_show_table(this.id);">🗑️ Delete</a>
+                    </li>
+                </ul>
+                <div class="d-flex">
+                    <input class="form-control me-2" type="search" id="searchbx2" placeholder="🔍 Search"
+                        aria-label="Search" onkeyup="search2()">
+                </div>
+            </div>
+    </div>
+    </nav>
+    <table id="candidate">
+        <tr>
+            <th>CANDIDATE ID</th>
+            <th>CANDIDATE NAME</th>
+            <th>POLITICAL PARTY</th>
+            <th>SYMBOL</th>
+            <th id="delete_head" style="display: none">🗑️</th>
+        </tr>
+        {% for crec in cand %}
+        <tr>
+            {% for cres in crec %}
+            <td>
+                {{cres}}
+            </td>
+            {% endfor %}
+            <td class="delete" style="display: none"><a href="/delete_candidate/{{crec[0]}}" style="text-decoration:none" onclick="if(!confirm('Are you sure you want to delete?')){return false;}">🗑️</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+    </div>
+    <div class="tab-pane fade" id="result-tab-pane" role="tabpanel" aria-labelledby="result-tab" tabindex="0">
+        <nav class="navbar navbar-expand-lg" style="background-color: #bbb1ff;"">
+                <div class="container-fluid">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent3">
+                <div class="d-flex" style="margin-left: 1200px;">
+                    <input class="form-control me-2" type="search" id="searchbx3" placeholder="🔍 Search"
+                        aria-label="Search" onkeyup="search3()">
+                </div>
+            </div>
+    </div>
+    </nav>
+    <table id="results">
+        <tr>
+            <th>CANDIDATE ID</th>
+            <th>CANDIDATE NAME</th>
+            <th>POLITICAL PARTY</th>
+            <th>SYMBOL</th>
+            <th>TOTAL VOTES</th>
+        </tr>
+        {% for srec in voted %}
+        <tr>
+            {% for sres in srec %}
+            <td>
+                {{sres}}
+            </td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </table>
+    </div>
+    </div>
+</body>
+
+</html>

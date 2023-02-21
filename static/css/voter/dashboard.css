@@ -1,0 +1,49 @@
+#pnav {
+    background-color: rgb(102, 99, 252);
+}
+
+#logout {
+    margin-left: 1300px;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+#settings-tab {
+    margin-left: 900px;
+}
+
+#myTab {
+    margin-left: 0.5px;
+    margin-top: 0.5px;
+    background-color: rgb(160, 255, 231);
+}
+
+#vote {
+    text-align: center;
+}
+
+#cand_details{
+    height: 400px;
+    width: 600px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid rgb(0, 0, 0);
+    background-color: rgb(0, 255, 200);
+}
+
+table td {
+    padding: 8px;
+    border: 1px solid rgb(0, 0, 0);
+}
+
+table th {
+    padding: 8px;
+    border: 1px solid rgb(0, 0, 0);
+}
