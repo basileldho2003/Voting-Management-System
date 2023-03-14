@@ -26,7 +26,8 @@
 <body style="background-color: rgb(255, 231, 180); width: 100%">
     <nav class="navbar" id="pnav">
         <form method="get" action="/logout" class="container-fluid justify-content-start">
-            <button type="submit" class="btn btn-danger" id="logout" onclick="window.open('/', '_blank');">🔐 Logout</button>
+            <button type="submit" class="btn btn-danger" id="logout" onclick="window.open('/', '_blank');">🔐
+                Logout</button>
             <div class="container">
                 <span class="navbar-text">
                     <h1>WELCOME, {{voter_name}}</h1>
@@ -46,14 +47,12 @@
                 aria-controls="candidate_details-tab-pane" aria-selected="false">Candidate Details - VOTE HERE</button>
         </li>
         <li class="nav-item" role="presentation">
-            <button class="nav-link" id="results-tab"
-                data-bs-toggle="tab" data-bs-target="#results-tab-pane" type="button" role="tab"
-                aria-controls="results-tab-pane" aria-selected="false">Results</button>
+            <button class="nav-link" id="results-tab" data-bs-toggle="tab" data-bs-target="#results-tab-pane"
+                type="button" role="tab" aria-controls="results-tab-pane" aria-selected="false">Results</button>
         </li>
         <li class="nav-item" role="presentation">
-            <button class="nav-link" id="settings-tab"
-                data-bs-toggle="tab" data-bs-target="#settings-tab-pane" type="button" role="tab"
-                aria-controls="settings-tab-pane" aria-selected="false">Settings</button>
+            <button class="nav-link" id="settings-tab" data-bs-toggle="tab" data-bs-target="#settings-tab-pane"
+                type="button" role="tab" aria-controls="settings-tab-pane" aria-selected="false">Settings</button>
         </li>
     </ul>
 
@@ -64,7 +63,8 @@
             {% if voted_val==1 %}
             <h3 style="text-align: center;">You have already voted.</h3>
             {% else %}
-            <h3 style="text-align: center;">You haven't voted till now. <br> To vote, click on - 'Candidate Details - VOTE HERE' tab after 'Home' tab.</h3>
+            <h3 style="text-align: center;">You haven't voted till now. <br> To vote, click on - 'Candidate Details -
+                VOTE HERE' tab after 'Home' tab.</h3>
             {% endif %}
         </div>
     </div>
@@ -97,10 +97,12 @@
                             </td>
                             <td>
                                 {% if voted_val==1 %}
-                                <a class="btn btn-primary" type="button" id="novote" name="novote" title="You can't vote."
-                                    style="background-color: crimson;" disabled>Vote</a>
+                                <a class="btn btn-primary" type="button" id="novote" name="novote"
+                                    title="You can't vote." style="background-color: crimson;" disabled>Vote</a>
                                 {% else %}
-                                <a href="/voted/{{cell[0]}}" onclick="if(!confirm('Are you sure you want to vote {{cell[0]}}? You cannot change it back.')){return false;}" class="btn btn-primary" type="button" id="vote" name="vote">Vote</a>
+                                <a href="/voted/{{cell[0]}}"
+                                    onclick="if(!confirm('Are you sure you want to vote {{cell[0]}}? You cannot change it back.')){return false;}"
+                                    class="btn btn-primary" type="button" id="vote" name="vote">Vote</a>
                                 {% endif %}
                             </td>
                         </tr>
@@ -168,7 +170,8 @@
             <div class="tab-content" id="pills-tabContent">
                 <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab"
                     tabindex="0">
-                    <form action="/edit_voter/details" method="post" class="row g-3" onsubmit="if(!confirm('Do you want to update your details?')){return false;} alert('Successfully updated voter details! Sign in again.'); window.open('/', '_blank');">
+                    <form action="/edit_voter/details" method="post" class="row g-3"
+                        onsubmit="if(!confirm('Do you want to update your details?')){return false;} alert('Successfully updated voter details! Sign in again.'); window.open('/', '_blank');">
                         {% for details in vdetails %}
                         <div class="col-md-4">
                             <div class="input-group mb-3">
@@ -183,15 +186,17 @@
                                 <span class="input-group-text" id="inputGroup-sizing-default"
                                     style="background-color:rgb(96, 255, 239)">Aadhar ID</span>
                                 <input type="text" class="form-control" aria-describedby="inputGroup-sizing-default"
-                                    spellcheck="false" maxlength="11" name="aadhaar" id="aadhaar" value="{{details[0]}}">
+                                    spellcheck="false" maxlength="11" name="aadhaar" id="aadhaar"
+                                    value="{{details[0]}}">
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="input-group mb-3">
-                                <span class="input-group-text" id="inputGroup-sizing-default" style="background-color:rgb(96, 255, 239)">Current Date of
+                                <span class="input-group-text" id="inputGroup-sizing-default"
+                                    style="background-color:rgb(96, 255, 239)">Current Date of
                                     Birth</span>
-                                <input type="text" class="form-control" aria-describedby="inputGroup-sizing-default" spellcheck="false"
-                                    name="cdob" id="cdob" value="{{details[2]}}" readonly>
+                                <input type="text" class="form-control" aria-describedby="inputGroup-sizing-default"
+                                    spellcheck="false" name="cdob" id="cdob" value="{{details[2]}}" readonly>
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -206,8 +211,8 @@
                             <div class="input-group mb-3">
                                 <span class="input-group-text" id="inputGroup-sizing-default"
                                     style="background-color:rgb(96, 255, 239)">Current Age</span>
-                                <input type="number" class="form-control" aria-describedby="inputGroup-sizing-default" spellcheck="false"
-                                    name="cage" id="cage" value="{{details[3]}}" min="18" readonly>
+                                <input type="number" class="form-control" aria-describedby="inputGroup-sizing-default"
+                                    spellcheck="false" name="cage" id="cage" value="{{details[3]}}" min="18" readonly>
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -221,17 +226,17 @@
                         </div>
                         <div class="col-md-4">
                             <div class="input-group mb-3">
-                                <span class="input-group-text" id="inputGroup-sizing-default" 
+                                <span class="input-group-text" id="inputGroup-sizing-default"
                                     style="background-color:rgb(96, 255, 239)">Current Gender</span>
                                 {% if details[4]=='M' %}
-                                <input type="text" class="form-control" aria-describedby="inputGroup-sizing-default" spellcheck="false" name="cgender"
-                                    id="cgender" value="Male" readonly>
+                                <input type="text" class="form-control" aria-describedby="inputGroup-sizing-default"
+                                    spellcheck="false" name="cgender" id="cgender" value="Male" readonly>
                                 {% elif details[4]=='F' %}
-                                <input type="text" class="form-control" aria-describedby="inputGroup-sizing-default" spellcheck="false" name="cgender"
-                                    id="cgender" value="Female" readonly>
+                                <input type="text" class="form-control" aria-describedby="inputGroup-sizing-default"
+                                    spellcheck="false" name="cgender" id="cgender" value="Female" readonly>
                                 {% elif details[4]=='T' %}
-                                <input type="text" class="form-control" aria-describedby="inputGroup-sizing-default" spellcheck="false" name="cgender"
-                                    id="cgender" value="Transgender" readonly>
+                                <input type="text" class="form-control" aria-describedby="inputGroup-sizing-default"
+                                    spellcheck="false" name="cgender" id="cgender" value="Transgender" readonly>
                                 {% endif %}
                             </div>
                         </div>
@@ -260,23 +265,29 @@
                         </div>
                         <div class="col-md-4">
                             <div class="input-group mb-3">
-                                <span class="input-group-text" id="inputGroup-sizing-default" style="background-color:rgb(96, 255, 239)">
+                                <span class="input-group-text" id="inputGroup-sizing-default"
+                                    style="background-color:rgb(96, 255, 239)">
                                     Current Qualification</span>
                                 {% if details[5]=='10' %}
-                                <input type="text" class="form-control" aria-describedby="inputGroup-sizing-default" spellcheck="false"
-                                    name="cqualification" id="cqualification" value="Tenth pass" readonly>
+                                <input type="text" class="form-control" aria-describedby="inputGroup-sizing-default"
+                                    spellcheck="false" name="cqualification" id="cqualification" value="Tenth pass"
+                                    readonly>
                                 {% elif details[5]=='12' %}
-                                <input type="text" class="form-control" aria-describedby="inputGroup-sizing-default" spellcheck="false"
-                                    name="cqualification" id="cqualification" value="Twelfth pass" readonly>
+                                <input type="text" class="form-control" aria-describedby="inputGroup-sizing-default"
+                                    spellcheck="false" name="cqualification" id="cqualification" value="Twelfth pass"
+                                    readonly>
                                 {% elif details[5]=='deg' %}
-                                <input type="text" class="form-control" aria-describedby="inputGroup-sizing-default" spellcheck="false"
-                                    name="cqualification" id="cqualification" value="Under Graduate" readonly>
+                                <input type="text" class="form-control" aria-describedby="inputGroup-sizing-default"
+                                    spellcheck="false" name="cqualification" id="cqualification" value="Under Graduate"
+                                    readonly>
                                 {% elif details[5]=='pdeg' %}
-                                <input type="text" class="form-control" aria-describedby="inputGroup-sizing-default" spellcheck="false"
-                                    name="cqualification" id="cqualification" value="Post Graduate" readonly>
+                                <input type="text" class="form-control" aria-describedby="inputGroup-sizing-default"
+                                    spellcheck="false" name="cqualification" id="cqualification" value="Post Graduate"
+                                    readonly>
                                 {% elif details[6]=='phd' %}
-                                <input type="text" class="form-control" aria-describedby="inputGroup-sizing-default" spellcheck="false"
-                                    name="cqualification" id="cqualification" value="Post Doctorate" readonly>
+                                <input type="text" class="form-control" aria-describedby="inputGroup-sizing-default"
+                                    spellcheck="false" name="cqualification" id="cqualification" value="Post Doctorate"
+                                    readonly>
                                 {% endif %}
                             </div>
                         </div>
@@ -285,7 +296,8 @@
                                 <span class="input-group-text" id="inputGroup-sizing-default"
                                     style="background-color:rgb(96, 255, 239)">New Qualification</span>
                                 <select class="form-select" aria-label="Qualification"
-                                    aria-describedby="inputGroup-sizing-default" name="nqualification" id="nqualification">
+                                    aria-describedby="inputGroup-sizing-default" name="nqualification"
+                                    id="nqualification">
                                     <option value="" selected>None</option>
                                     <option value="10">Tenth pass</option>
                                     <option value="12">Twelfth pass</option>
@@ -304,20 +316,22 @@
                 </div>
                 <div class="tab-pane fade show" id="pills-home2" role="tabpanel" aria-labelledby="pills-home2-tab"
                     tabindex="0">
-                   
+
                 </div>
                 <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab"
                     tabindex="0">
                     <div class="tab-content" id="pills-tabContent">
                         <div class="tab-pane fade show active" id="pills-home" role="tabpanel"
                             aria-labelledby="pills-home-tab" tabindex="0">
-                            <form action="/change_password" method="post" class="row g-3" onsubmit="if(!confirm('Do you want to update your password?')){return false;} alert('Successfully updated password! Sign in again.'); window.open('/', '_blank');">
+                            <form action="/change_password" method="post" class="row g-3"
+                                onsubmit="if(!confirm('Do you want to update your password?')){return false;} alert('Successfully updated password! Sign in again.'); window.open('/', '_blank');">
                                 <div class="col-md-4">
                                     <div class="input-group mb-3">
                                         <span class="input-group-text" id="inputGroup-sizing-default"
                                             style="background-color:rgb(96, 255, 239)">Password</span>
-                                        <input type="password" class="form-control passwd" aria-describedby="inputGroup-sizing-default"
-                                            spellcheck="false" name="passwd" id="passwd" onkeyup="checkPasswd()" maxlength="10" required>
+                                        <input type="password" class="form-control passwd"
+                                            aria-describedby="inputGroup-sizing-default" spellcheck="false"
+                                            name="passwd" id="passwd" onkeyup="checkPasswd()" maxlength="10" required>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
@@ -325,10 +339,12 @@
                                         <span class="input-group-text" id="inputGroup-sizing-default"
                                             style="background-color:rgb(96, 255, 239)">Re-enter Password
                                         </span>
-                                        <input type="password" class="form-control" aria-describedby="inputGroup-sizing-default" spellcheck="false"
-                                           name="repasswd" id="repasswd" onkeyup="checkPasswd()" maxlength="10" required>
-                                        </div>
-                                        <span id="message"></span>
+                                        <input type="password" class="form-control"
+                                            aria-describedby="inputGroup-sizing-default" spellcheck="false"
+                                            name="repasswd" id="repasswd" onkeyup="checkPasswd()" maxlength="10"
+                                            required>
+                                    </div>
+                                    <span id="message"></span>
                                 </div>
                                 <div class="mb-3" style="text-align: center;">
                                     <input type="submit" class="btn btn-primary" value="Update Password" id="upasswd">
@@ -354,22 +370,28 @@
     <script>
         function vote() {
             alert("Clicked")
-            document.getElementById("vote").disabled=true;
-            document.getElementById("vote").style.backgroundColor="#f47067";
+            document.getElementById("vote").disabled = true;
+            document.getElementById("vote").style.backgroundColor = "#f47067";
             alert("Disabled", document.getElementById("vote").disabled);
         }
         var checkPasswd = function () {
-                var passwd = document.getElementById("passwd").value;
-                var repasswd = document.getElementById("repasswd").value;
+            var passwd = document.getElementById("passwd").value;
+            var repasswd = document.getElementById("repasswd").value;
+            if (passwd) {
                 if (passwd == repasswd) {
                     document.getElementById('message').style.color = "green";
                     document.getElementById('message').innerHTML = "Matching! ✅";
-                    document.getElementById('upasswd').disabled = false;
+                    document.getElementById('submit').disabled = false;
                 } else {
                     document.getElementById('message').style.color = "red";
                     document.getElementById('message').innerHTML = "Not matching! ❌";
-                    document.getElementById('upasswd').disabled = true;
+                    document.getElementById('submit').disabled = true;
                 }
+            }
+            else {
+                document.getElementById('message').innerHTML = "";
+                document.getElementById('submit').disabled = false;
+            }
         }
     </script>
 </body>

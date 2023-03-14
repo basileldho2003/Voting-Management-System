@@ -140,14 +140,20 @@
         var checkPasswd=function(){
             var passwd = document.getElementById("passwd").value;
             var repasswd = document.getElementById("repasswd").value;
-            if (passwd==repasswd) {
-                document.getElementById('message').style.color="green";
-                document.getElementById('message').innerHTML="Matching! ✅";
-                document.getElementById('submit').disabled=false;
-            } else {
-                document.getElementById('message').style.color = "red";
-                document.getElementById('message').innerHTML = "Not matching! ❌";
-                document.getElementById('submit').disabled = true;
+            if(passwd){
+                if (passwd == repasswd) {
+                    document.getElementById('message').style.color = "green";
+                    document.getElementById('message').innerHTML = "Matching! ✅";
+                    document.getElementById('submit').disabled = false;
+                } else {
+                    document.getElementById('message').style.color = "red";
+                    document.getElementById('message').innerHTML = "Not matching! ❌";
+                    document.getElementById('submit').disabled = true;
+                }
+            }
+            else{
+                document.getElementById('message').innerHTML = "";
+                document.getElementById('submit').disabled = false;
             }
         }
     </script>
