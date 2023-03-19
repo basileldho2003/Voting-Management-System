@@ -16,7 +16,7 @@ def home():
     voter = mycur.fetchall()
     mycur.execute("SELECT * FROM CANDIDATE_LIST")
     cand = mycur.fetchall()
-    mycur.execute("SELECT CL.CID, CL.CNAME, CL.PARTY, CL.SYMBOL, COUNT(CV.CID) AS TOTAL FROM CANDIDATE_LIST CL, CANDIDATE_VOTED CV WHERE CL.CID=CV.CID GROUP BY CV.CID ORDER BY CV.CID ASC")
+    mycur.execute("SELECT CL.CID, CL.CNAME, CL.PARTY, CL.SYMBOL, COUNT(CV.CID) AS TOTAL FROM CANDIDATE_LIST CL, CANDIDATE_VOTED CV WHERE CL.CID=CV.CID GROUP BY CV.CID ORDER BY TOTAL DESC")
     voted = mycur.fetchall()
     mycur.close()
     return render_template("admin/dashboard.html", voter=voter, cand=cand, voted=voted)

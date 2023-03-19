@@ -92,7 +92,7 @@ def dashboard():
     voter_name = vname[0][0]
     mycur.execute("SELECT * FROM CANDIDATE_LIST")
     cand_details = mycur.fetchall()
-    mycur.execute("SELECT CL.CID, CL.CNAME, CL.PARTY, CL.SYMBOL, COUNT(CV.CID) AS TOTAL FROM CANDIDATE_LIST CL, CANDIDATE_VOTED CV WHERE CL.CID=CV.CID GROUP BY CV.CID ORDER BY CV.CID ASC")
+    mycur.execute("SELECT CL.CID, CL.CNAME, CL.PARTY, CL.SYMBOL, COUNT(CV.CID) AS TOTAL FROM CANDIDATE_LIST CL, CANDIDATE_VOTED CV WHERE CL.CID=CV.CID GROUP BY CV.CID ORDER BY TOTAL DESC")
     vote_results = mycur.fetchall()
     mycur.execute(f"SELECT * FROM VOTER_DETAILS WHERE AADHAR_ID={aadhaar}")
     vdetails = mycur.fetchall()
