@@ -13,6 +13,7 @@
 pip install -r requirements.txt
 ```
 3. Open MySQL/MariaDB. Enter this command :
+
 Windows :
 ```
 SOURCE <path_to_file>\VOTERDB.sql
@@ -27,6 +28,7 @@ SOURCE <path_to_file>/VOTERDB.sql
 python admin.py
 ```
 Enter `localhost:5000` in web browser.
+
 6. Then, enter command to run voter.py :
 ```
 python voter.py
