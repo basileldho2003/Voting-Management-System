@@ -2,4 +2,7 @@
 
 ## This is my demo project of Voting Management System.
 
-Works in Python 3.10 and later.
+Requirements :
+1. Python 3.10 and later
+2. MySQL/MariaDB (supported)
+
