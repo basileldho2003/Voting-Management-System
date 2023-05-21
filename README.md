@@ -6,6 +6,8 @@
 1. [Python](https://www.python.org/) (supported versions only)
 2. [MySQL](https://dev.mysql.com/downloads/)/[MariaDB](https://mariadb.org/) (supported versions only)
 
+> Password for admin dashboard : admin#123
+
 ### Steps for installing and running the project :
 1. In CMD/PowerShell/any Linux Terminal, create virtual environment by following this [link](https://www.geeksforgeeks.org/creating-python-virtual-environment-windows-linux/).
 2. Enter this command to install Python libraries required to run this project :
