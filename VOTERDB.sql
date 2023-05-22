@@ -18,7 +18,7 @@
 -- Database creation
 DROP DATABASE IF EXISTS VOTERDB ;
 CREATE DATABASE VOTERDB ;
-
+USE VOTERDB;
 --
 -- Table structure for table `ADMIN_CREDENTIALS`
 --
